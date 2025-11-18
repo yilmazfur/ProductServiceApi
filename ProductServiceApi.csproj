@@ -11,9 +11,13 @@
 
   <ItemGroup>
     <Compile Remove="ImportExportFunction\**" />
+    <Compile Remove="ProductServiceApi.Tests\**" />
     <EmbeddedResource Remove="ImportExportFunction\**" />
+    <EmbeddedResource Remove="ProductServiceApi.Tests\**" />
     <None Remove="ImportExportFunction\**" />
+    <None Remove="ProductServiceApi.Tests\**" />
     <Content Remove="ImportExportFunction\**" />
+    <Content Remove="ProductServiceApi.Tests\**" />
   </ItemGroup>
 
   <ItemGroup>

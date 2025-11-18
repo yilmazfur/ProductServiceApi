@@ -40,20 +40,6 @@ namespace WebApplication1.Presentation.WebApi.Controllers
         }
 
         /// <summary>
-        /// Export all products to a JSON file
-        /// </summary>
-        /// <param name="uploadToBlob">Whether to upload the file to blob storage</param>
-        [HttpGet("export")]
-        public async Task<IActionResult> ExportProducts([FromQuery] bool uploadToBlob = false)
-        {
-            _logger.LogInformation("Exporting all products");
-
-            var (fileStream, fileName) = await _mediator.Send(new ExportProductsCommand(uploadToBlob));
-
-            return File(fileStream, "application/json", fileName);
-        }
-
-        /// <summary>
         /// List all import files in blob storage
         /// </summary>
         [HttpGet("import/files")]

@@ -1,0 +1,72 @@
+[
+  {
+    "code": "F1001",
+    "name": "Organic Bananas",
+    "category": "Food",
+    "content": "Fresh organic bananas sourced from sustainable farms. Ideal for smoothies and snacking.",
+    "isActive": true
+  },
+  {
+    "code": "F1002",
+    "name": "Whole Wheat Bread",
+    "category": "Food",
+    "content": "Freshly baked whole wheat bread with no artificial preservatives.",
+    "isActive": true
+  },
+  {
+    "code": "F1003",
+    "name": "Cheddar Cheese 200g",
+    "category": "Food",
+    "content": "Mild cheddar cheese perfect for sandwiches, grated dishes, and snacking.",
+    "isActive": true
+  },
+  {
+    "code": "F1004",
+    "name": "Free Range Eggs - 12 pack",
+    "category": "Food",
+    "content": "Farm-fresh free-range eggs from happy hens. Rich in protein and nutrients.",
+    "isActive": true
+  },
+  {
+    "code": "F1005",
+    "name": "Almond Milk 1L",
+    "category": "Food",
+    "content": "Unsweetened almond milk, dairy-free alternative perfect for cereals and coffee.",
+    "isActive": true
+  },
+  {
+    "code": "NF2001",
+    "name": "Eco Dish Soap 500ml",
+    "category": "NonFood",
+    "content": "Biodegradable dish soap with natural lemon scent. Tough on grease, gentle on hands.",
+    "isActive": true
+  },
+  {
+    "code": "NF2002",
+    "name": "Cotton Kitchen Towels - 3 pack",
+    "category": "NonFood",
+    "content": "Absorbent 100% cotton kitchen towels. Machine washable and reusable.",
+    "isActive": true
+  },
+  {
+    "code": "NF2003",
+    "name": "Stainless Steel Sponge",
+    "category": "NonFood",
+    "content": "Durable stainless steel sponge for heavy-duty cleaning. Rust-resistant.",
+    "isActive": true
+  },
+  {
+    "code": "F1006",
+    "name": "Organic Tomatoes 500g",
+    "category": "Food",
+    "content": "Vine-ripened organic tomatoes, perfect for salads and cooking.",
+    "isActive": false
+  },
+  {
+    "code": "NF2004",
+    "name": "Glass Cleaner Spray 750ml",
+    "category": "NonFood",
+    "content": "Streak-free glass cleaner with ammonia-free formula. Safe for all glass surfaces.",
+    "isActive": true
+  }
+]

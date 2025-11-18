@@ -1,0 +1,235 @@
+### Product Service API - Test Requests
+### Replace {{baseUrl}} with your actual URL (e.g., https://localhost:7214)
+
+@baseUrl = https://localhost:7214
+
+### Get All Products
+GET {{baseUrl}}/api/products
+Accept: application/json
+
+###
+
+### Get Product by Code
+GET {{baseUrl}}/api/products/F1001
+Accept: application/json
+
+###
+
+### Create Product - Food Category
+POST {{baseUrl}}/api/products
+Content-Type: application/json
+
+{
+  "code": "F1001",
+  "name": "Organic Bananas",
+  "category": "Food",
+  "content": "Fresh organic bananas sourced from sustainable farms. Ideal for smoothies and snacking.",
+  "isActive": true
+}
+
+###
+
+### Create Product - NonFood Category
+POST {{baseUrl}}/api/products
+Content-Type: application/json
+
+{
+  "code": "NF2001",
+  "name": "Eco Dish Soap 500ml",
+  "category": "NonFood",
+  "content": "Biodegradable dish soap with natural lemon scent. Tough on grease, gentle on hands.",
+  "isActive": true
+}
+
+###
+
+### Create Product - Validation Error (Name too long)
+POST {{baseUrl}}/api/products
+Content-Type: application/json
+
+{
+  "code": "F1002",
+  "name": "This is a very long product name that exceeds the maximum allowed length of fifty characters",
+  "category": "Food",
+  "content": "Test product",
+  "isActive": true
+}
+
+###
+
+### Create Product - Validation Error (Empty Name)
+POST {{baseUrl}}/api/products
+Content-Type: application/json
+
+{
+  "code": "F1003",
+  "name": "",
+  "category": "Food",
+  "content": "Test product",
+  "isActive": true
+}
+
+###
+
+### Create Product - Duplicate Code (Should return 409 Conflict)
+POST {{baseUrl}}/api/products
+Content-Type: application/json
+
+{
+  "code": "F1001",
+  "name": "Duplicate Product",
+  "category": "Food",
+  "content": "This should fail due to duplicate code",
+  "isActive": true
+}
+
+###
+
+### Update Product
+PUT {{baseUrl}}/api/products/F1001
+Content-Type: application/json
+
+{
+  "name": "Organic Bananas - Premium",
+  "category": "Food",
+  "content": "Premium fresh organic bananas sourced from sustainable farms.",
+  "isActive": true
+}
+
+###
+
+### Update Product - Change to Inactive
+PUT {{baseUrl}}/api/products/F1001
+Content-Type: application/json
+
+{
+  "name": "Organic Bananas",
+  "category": "Food",
+  "content": "Fresh organic bananas sourced from sustainable farms.",
+  "isActive": false
+}
+
+###
+
+### Update Product - Not Found (Should return 404)
+PUT {{baseUrl}}/api/products/INVALID
+Content-Type: application/json
+
+{
+  "name": "Test Product",
+  "category": "Food",
+  "content": "This should fail",
+  "isActive": true
+}
+
+###
+
+### Delete Product
+DELETE {{baseUrl}}/api/products/F1001
+
+###
+
+### Delete Product - Not Found (Should return 404)
+DELETE {{baseUrl}}/api/products/INVALID
+
+###
+
+### Bulk Create Products
+POST {{baseUrl}}/api/products
+Content-Type: application/json
+
+{
+  "code": "F1002",
+  "name": "Whole Wheat Bread",
+  "category": "Food",
+  "content": "Freshly baked whole wheat bread with no artificial preservatives.",
+  "isActive": true
+}
+
+###
+
+POST {{baseUrl}}/api/products
+Content-Type: application/json
+
+{
+  "code": "F1003",
+  "name": "Cheddar Cheese 200g",
+  "category": "Food",
+  "content": "Mild cheddar cheese perfect for sandwiches, grated dishes, and snacking.",
+  "isActive": true
+}
+
+###
+
+POST {{baseUrl}}/api/products
+Content-Type: application/json
+
+{
+  "code": "F1004",
+  "name": "Free Range Eggs - 12 pack",
+  "category": "Food",
+  "content": "Farm-fresh free-range eggs from happy hens. Rich in protein and nutrients.",
+  "isActive": true
+}
+
+###
+
+POST {{baseUrl}}/api/products
+Content-Type: application/json
+
+{
+  "code": "NF2002",
+  "name": "Cotton Kitchen Towels - 3 pack",
+  "category": "NonFood",
+  "content": "Absorbent 100% cotton kitchen towels. Machine washable and reusable.",
+  "isActive": true
+}
+
+###
+
+##############################################
+### IMPORT/EXPORT ENDPOINTS
+##############################################
+
+### Export All Products to JSON
+GET {{baseUrl}}/api/products/export?uploadToBlob=true
+Accept: application/json
+
+###
+
+### Export All Products (No Blob Upload)
+GET {{baseUrl}}/api/products/export?uploadToBlob=false
+Accept: application/json
+
+###
+
+### Import Products from JSON File
+### Note: Use your API testing tool (Postman, Insomnia, etc.) for file upload
+### Or use curl:
+### curl -X POST "{{baseUrl}}/api/products/import?uploadToBlob=true" \
+###   -H "Content-Type: multipart/form-data" \
+###   -F "file=@SampleData/products.json"
+POST {{baseUrl}}/api/products/import?uploadToBlob=true
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="products.json"
+Content-Type: application/json
+
+< ./SampleData/products.json
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+###
+
+### List Import Files in Blob Storage
+GET {{baseUrl}}/api/products/import/files
+Accept: application/json
+
+###
+
+### Import Products from Blob Storage File
+### Replace 'import_20240115_120000.json' with an actual file name from the list above
+POST {{baseUrl}}/api/products/import/blob/import_20240115_120000.json
+Content-Type: application/json
+
+###
